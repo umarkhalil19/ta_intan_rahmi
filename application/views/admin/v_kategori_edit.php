@@ -14,11 +14,12 @@
             <div class="col-md-12">
                 <div class="card shadow mb-4">
                     <div class="card-body">
-                        <?= form_open('admin/ketegori_add_act'); ?>
+                        <?= form_open('admin/kategori_update'); ?>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label>Nama</label>
-                                <input type="text" class="form-control" name="nama" value="<?= set_value('nama') ?>">
+                            <div class="form-group col-md-12">
+                                <label>Nama Kategori</label>
+                                <input type="hidden" name="id" value="<?= $kategori->kategori_id ?>">
+                                <input type="text" class="form-control" name="nama" value="<?= $kategori->kategori_nama ?>">
                                 <?= form_error('nama', '<small><span class="text-danger">', '</span></small>'); ?>
                             </div>
                         </div>

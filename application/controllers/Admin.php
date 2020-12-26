@@ -24,136 +24,85 @@ class Admin extends CI_Controller
         $this->mylib->aview('v_index');
     }
 
-    function mahasiswa()
+    public function kategori()
     {
-        $data['mahasiswa'] = $this->m_vic->get_data('tbl_mahasiswa');
-        $this->mylib->aview('v_mahasiswa', $data);
+        $data['kategori'] = $this->m_vic->get_data('tbl_kategori');
+        $this->mylib->aview('v_kategori', $data);
     }
 
-    function tambah_mahasiswa()
+    public function kategori_add()
     {
-        $data['dosen'] = $this->m_vic->get_data('dah_dosen');
-        $this->mylib->aview('v_tambah_mahasiswa', $data);
+        $this->mylib->aview('v_kategori_add');
     }
 
-    function edit_mahasiswa($id)
+    public function kategori_add_act()
     {
-        $w = [
-            'mhs_id' => $id
-        ];
-        $data = [
-            'mhs_status_judul' => 0
-        ];
-        $this->m_vic->update_data($w, $data, 'tbl_mahasiswa');
-        $this->session->set_flashdata('suces', 'Status Berhasil Diubah, Mahasiswa tersebut sudah bisa merubah judul');
-        redirect('admin/mahasiswa?notif=suces');
-    }
-
-    function delete_mahasiswa($id)
-    {
-        $w = [
-            'mhs_id' => $id
-        ];
-        $this->m_vic->delete_data($w, 'tbl_mahasiswa');
-        $this->session->set_flashdata('error', 'Data Mahasiswa Berhasil Dihapus');
-        redirect('admin/mahasiswa?notif=error');
-    }
-
-    function tambah_mahasiswa_act()
-    {
-        $this->form_validation->set_rules('nim', 'NIM', 'required|trim|is_unique[tbl_mahasiswa.mhs_nim]', [
-            'is_unique' => 'NIM Sudah Terdaftar'
-        ]);
-        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
-        $this->form_validation->set_rules('dosen', 'Dosen', 'required|trim');
+        $this->form_validation->set_rules('nama', 'Nama Kategori', 'required');
         if ($this->form_validation->run() != true) {
-            $this->tambah_mahasiswa();
+            $this->kategori_add();
         } else {
             $data = [
-                'mhs_nim' => $this->input->post('nim'),
-                'mhs_nama' => $this->input->post('nama'),
-                'mhs_dosen_pembimbing' => $this->input->post('dosen'),
-                'mhs_pass' => str_mod(vic_slug_akun($this->input->post('pass'))),
-                'h_pengguna' => $this->session->userdata('login'),
-                'h_tanggal' =>  date('Y-m-d'),
-                'h_waktu' => date('H:i:s')
+                'kategori_nama' => $this->input->post('nama'),
+                'h_pengguna' => 'intan',
+                'h_tanggal' => date('Y-m-d'),
+                'h_waktu' => date('H:i:s'),
+                'h_ip' => _getIpaddress(),
             ];
-            $this->m_vic->insert_data($data, 'tbl_mahasiswa');
-            redirect('admin/mahasiswa');
+            $this->m_vic->insert_data($data, 'tbl_kategori');
+            $this->session->set_flashdata('suces', 'Data kategori berhasil ditambah!!!');
+            redirect('admin/kategori?notif=suces');
         }
     }
 
-    function dosen_penguji($id)
+    public function kategori_edit($id = 0)
     {
-        $w = [
-            'mhs_id' => $id
-        ];
-        $data['mhs'] = $this->m_vic->edit_data($w, 'tbl_mahasiswa')->row();
-        $data['dosen'] = $this->m_vic->get_data('dah_dosen');
-        $this->mylib->aview('v_dosen_penguji', $data);
-    }
-
-    function dosen_penguji_act()
-    {
-        $id = $this->input->post('id');
-        $this->form_validation->set_rules('dosen_penguji', 'Dosen Penguji', 'required');
-        if ($this->form_validation->run() != true) {
-            $this->dosen_penguji($id);
+        if ($id === 0) {
+            $this->session->set_flashdata('error', 'Data tidak tersedia');
+            redirect('admin/kategori?notif=error');
         } else {
             $w = [
-                'mhs_id' => $id
+                'kategori_id' => $id
             ];
-            $data = [
-                'mhs_dosen_penguji' => $this->input->post('dosen_penguji')
-            ];
-            $this->m_vic->update_data($w, $data, 'tbl_mahasiswa');
-            $this->session->set_flashdata('suces', 'Data Dosen Penguji Berhasil Ditambah');
-            redirect('admin/mahasiswa?notif=suces');
+            $data['kategori'] = $this->m_vic->edit_data($w, 'tbl_kategori')->row();
+            $this->mylib->aview('v_kategori_edit', $data);
         }
     }
 
-    function users()
+    public function kategori_update()
     {
-        $data['users'] = $this->m_vic->get_data('tbl_users');
-        $this->mylib->aview('v_users', $data);
-    }
-
-    function change_pass()
-    {
-        $this->mylib->aview('v_change_pass');
-    }
-
-    function update_pass()
-    {
-        $this->form_validation->set_rules('pass1', 'Password baru', 'trim|required');
-        $this->form_validation->set_rules('pass2', 'Konfirmasi Password baru', 'trim|required|matches[pass1]');
-        if ($this->form_validation->run() != true) {
-            $this->change_pass();
+        if ($this->input->post('id') === '') {
+            $this->session->set_flashdata('error', 'Data tidak tersedia');
+            redirect('admin/kategori?notif=error');
         } else {
             $w = [
-                'user_id' => $this->session->userdata('id')
+                'kategori_id' => $this->input->post('id')
             ];
             $data = [
-                'user_pass' => str_mod(vic_slug_akun($this->input->post('pass1'))),
+                'kategori_nama' => $this->input->post('nama'),
+                'h_pengguna' => 'intan',
+                'h_tanggal' => date('Y-m-d'),
+                'h_waktu' => date('H:i:s'),
+                'h_ip' => _getIpaddress(),
             ];
-            $this->m_vic->update_data($w, $data, 'tbl_users');
-            $this->session->set_flashdata('suces', 'Password Anda Berhasil Diubah');
-            redirect('Admin/index?notif=suces');
+            $this->m_vic->update_data($w, $data, 'tbl_kategori');
+            $this->session->set_flashdata('suces', 'Data kategori berhasil diubah!!!');
+            redirect('admin/kategori?notif=suces');
         }
     }
 
-    function reset_pass($id)
+    public function kategori_delete($id = 0)
     {
-        $w = [
-            'mhs_id' => $id
-        ];
-        $data = [
-            'mhs_pass' => str_mod(vic_slug_akun('kp_informatika')),
-            'mhs_status_pass' => 0
-        ];
-        $this->m_vic->update_data($w, $data, 'tbl_mahasiswa');
-        $this->session->set_flashdata('suces', 'Password Berhasil di Reset');
-        redirect('admin/mahasiswa?notif=suces');
+        if ($id === 0) {
+            $this->session->set_flashdata('error', 'Data tidak tersedia');
+            redirect('admin/kategori?notif=error');
+        } else {
+            $w = [
+                'kategori_id' => $id
+            ];
+            $this->m_vic->delete_data($w, 'tbl_kategori');
+            $this->session->set_flashdata('suces', 'Data kategori berhasil dihapus!!!');
+            redirect('admin/kategori?notif=suces');
+        }
     }
 
     function logout()

@@ -59,6 +59,11 @@
                 Menu Admin
             </div>
             <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() . 'admin/kategori' ?>">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Kategori</span></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url() . 'admin/data_latih' ?>">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Data Latih</span></a>
