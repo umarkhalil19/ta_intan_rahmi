@@ -64,12 +64,12 @@
                     <span>Kategori</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url() . 'admin/data_latih' ?>">
+                <a class="nav-link" href="<?= base_url() . 'admin/latih' ?>">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Data Latih</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url() . 'admin/data_uji' ?>">
+                <a class="nav-link" href="<?= base_url() . 'admin/uji' ?>">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Data Uji</span></a>
             </li>
