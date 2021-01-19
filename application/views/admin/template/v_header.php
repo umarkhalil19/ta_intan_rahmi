@@ -32,7 +32,7 @@
         <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url() . 'admin' ?>">
                 <div class="sidebar-brand-icon">
                     <i><img src="<?= base_url() . 'assets/img/logo_informatika_2.png' ?>" alt="informatika" height="50pt"></i>
                 </div>
@@ -72,6 +72,16 @@
                 <a class="nav-link" href="<?= base_url() . 'admin/uji' ?>">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Data Uji</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Menu Admin
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() . 'admin/logout' ?>">
+                    <i class="fas fa-fw fa-sign-out-alt"></i>
+                    <span>Keluar</span></a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">

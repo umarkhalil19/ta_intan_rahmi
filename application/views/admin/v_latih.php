@@ -43,7 +43,6 @@
                                         <td><?= $class->kategori_nama ?></td>
                                         <td><?= $l->latih_category ?></td>
                                         <td>
-                                            <a href="<?= base_url() . 'admin/latih_edit/' . $l->latih_id ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="Edit Data Latih"><span class="fas fa-fw fa-wrench"></span></a>
                                             <a href="#" id="<?= base_url() . 'admin/latih_delete/' . $l->latih_id ?>" class="btn btn-delete btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Hapus Data Latih"><span class="fas fa-fw fa-trash"></span></a>
                                         </td>
                                     </tr>

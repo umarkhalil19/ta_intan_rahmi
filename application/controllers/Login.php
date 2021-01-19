@@ -49,8 +49,8 @@ class Login extends CI_Controller
     {
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[100]');
-        $this->form_validation->set_rules('userCaptcha', 'Captcha', 'required|callback_check_captcha');
-        $userCaptcha = $this->input->post('userCaptcha');
+        // $this->form_validation->set_rules('userCaptcha', 'Captcha', 'required|callback_check_captcha');
+        // $userCaptcha = $this->input->post('userCaptcha');
 
         if ($this->form_validation->run() != true) {
             $this->index();
@@ -75,41 +75,7 @@ class Login extends CI_Controller
                 $this->session->set_userdata($session);
                 redirect('Admin');
             } else {
-                $where = array(
-                    'dosen_nidn' => $uname,
-                    'dosen_pass' => $pass,
-                );
-                $data = $this->m_vic->edit_data($where, 'dah_dosen');
-                if ($data->num_rows() > 0) {
-                    $mydata = $data->row();
-                    $session = [
-                        'nama' => $mydata->dosen_nama,
-                        'login' => $mydata->dosen_nidn,
-                        // 'email' => $mydata->user_email,
-                        'level' => 'dosen',
-                    ];
-                    $this->session->set_userdata($session);
-                    redirect('Dosen');
-                } else {
-                    $where = array(
-                        'mhs_nim' => $uname,
-                        'mhs_pass' => $pass,
-                    );
-                    $data = $this->m_vic->edit_data($where, 'tbl_mahasiswa');
-                    if ($data->num_rows() > 0) {
-                        $mydata = $data->row();
-                        $session = [
-                            'nama' => $mydata->mhs_nama,
-                            'login' => $mydata->mhs_nim,
-                            // 'email' => $mydata->user_email,
-                            'level' => 'mhs',
-                        ];
-                        $this->session->set_userdata($session);
-                        redirect('Mahasiswa');
-                    } else {
-                        redirect('login/?alert=login-failed');
-                    }
-                }
+                redirect('login/?alert=login-failed');
             }
         }
     }

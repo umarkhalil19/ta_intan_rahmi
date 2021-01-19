@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="utf-8">
+    <!-- <link rel="favicon" href="<?= base_url() . 'assets/img/new-unimal.jpeg' ?>"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -40,7 +41,7 @@
                                         <h1 class="h4 text-gray-900 mb-4">Sistem Klasifikasi Tugas Akhir Teknik Informatika Menggunakan K-Nearest Neighbor (KNN)</h1>
                                         <?php show_alert() ?>
                                     </div>
-                                    <?= form_open('admin', ['class' => 'user']); ?>
+                                    <?= form_open('login/cek', ['class' => 'user']); ?>
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-user" id="nim" aria-describedby="emailHelp" name="username" placeholder="Username" value="<?= set_value('username') ?>">
                                         <?= form_error('username', '<small><span class="text-danger">', '</span></small>'); ?>
@@ -48,16 +49,6 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="exampleInputPassword" name="password" placeholder="Password">
                                         <?= form_error('password', '<small><span class="text-danger">', '</span></small>'); ?>
-                                    </div>
-                                    <div class="form-group text-center">
-                                        <label for="exampleInputPassword">
-                                            <?php echo $captcha['image']; ?>
-                                        </label>
-                                        <input style="background:white" class="form-control form-control-user" type="text" autocomplete="off" name="userCaptcha" placeholder="Masukkan angka diatas ..">
-                                        <?php if (form_error('userCaptcha') != "") {
-                                            echo form_error('userCaptcha', '<small><span class="text-danger">', '</span></small>');
-                                        } ?>
-
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-user btn-block">

@@ -37,7 +37,6 @@
                                         <td><?= $k->kategori_nama ?></td>
                                         <td>
                                             <a href="<?= base_url() . 'admin/kategori_edit/' . $k->kategori_id ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="Edit Kategori"><span class="fas fa-fw fa-wrench"></span></a>
-                                            <a href="#" id="<?= base_url() . 'admin/kategori_delete/' . $k->kategori_id ?>" class="btn btn-delete btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Hapus Kategori"><span class="fas fa-fw fa-trash"></span></a>
                                         </td>
                                     </tr>
                                 <?php } ?>

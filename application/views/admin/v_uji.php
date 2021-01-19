@@ -43,8 +43,7 @@
                                         <!-- <td><?= $class->kategori_nama ?></td> -->
                                         <td><?= $l->uji_category ?></td>
                                         <td>
-                                            <a href="<?= base_url() . 'admin/uji_act_ver2/' . $l->uji_id ?>">Uji</a>
-                                            <a href="<?= base_url() . 'admin/uji_edit/' . $l->uji_id ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="right" title="Edit Data Uji"><span class="fas fa-fw fa-wrench"></span></a>
+                                            <a href="<?= base_url() . 'admin/uji_act_ver3/' . $l->uji_id ?>" class="btn btn-sm btn-primary" title="Proses Data Uji"> <span class="fas fa-fw fa-spinner"></span></a>
                                             <a href="#" id="<?= base_url() . 'admin/uji_delete/' . $l->uji_id ?>" class="btn btn-delete btn-sm btn-danger" data-toggle="tooltip" data-placement="right" title="Hapus Data Uji"><span class="fas fa-fw fa-trash"></span></a>
                                         </td>
                                     </tr>

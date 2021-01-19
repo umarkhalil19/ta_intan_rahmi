@@ -233,4 +233,27 @@ function _textpreprosses($kalimat = '')
   return $filter_array;
 }
 
+function hasil_uji()
+{
+  $ci = &get_instance();
+  $nilai = $ci->db->query("SELECT hasil_category FROM tbl_hasil ORDER BY hasil_nilai DESC LIMIT 6")->result();
+  // var_dump($nilai);
+  $array_baru = [];
+  foreach ($nilai as $key) {
+    $array_baru[] = $key->hasil_category;
+  }
+  $count = array_count_values($array_baru);
+  $array_n = [];
+  foreach ($count as $key => $value) {
+    $array_n[] = [
+      'jumlah'  => $value,
+      'category' => $key
+    ];
+  }
+  rsort($array_n);
+
+  $hasil = $array_n[0]['category'];
+  return $hasil;
+}
+
 ?>
