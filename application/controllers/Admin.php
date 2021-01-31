@@ -507,6 +507,17 @@ class Admin extends CI_Controller
         }
         // $this->mylib->aview('v_hasil');
     }
+     public function uji_delete($id = 0)
+    {
+        if ($id == 0) {
+            redirect('admin/uji');
+        } else {
+            $w = ['uji_id' => $id];
+            $this->m_vic->delete_data($w, 'tbl_data_uji');
+            $this->m_vic->delete_data($w, 'tbl_kata_uji');
+            redirect('admin/uji');
+        }
+    }
 
     public function test()
     {

@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Latih</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Uji</h1>
     </div>
 
     <!-- Content Row -->
@@ -17,7 +17,7 @@
                         <?= form_open('admin/uji_add_act'); ?>
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label>Data Latih</label>
+                                <label>Data Uji</label>
                                 <textarea name="kalimat" id="kalimat" class="form-control" cols="30" rows="10"><?= set_value('kalimat'); ?></textarea>
                                 <?= form_error('kalimat', '<small><span class="text-danger">', '</span></small>'); ?>
                             </div>
