@@ -25,7 +25,7 @@
                                     <th>#</th>
                                     <th>Kalimat</th>
                                     <!-- <th>Kalimat Proses</th> -->
-                                    <!-- <th>Kategori</th> -->
+                                    <th>Kategori</th>
                                     <th>Tipe</th>
                                     <th>Action</th>
                                 </tr>
@@ -34,13 +34,13 @@
                                 <?php
                                 $no = 1;
                                 foreach ($uji->result() as $l) {
-                                    // $class = $this->db->query("SELECT kategori_nama FROM tbl_kategori WHERE kategori_id ='$l->latih_class'")->row();
+                                    $class = $this->db->query("SELECT kategori_nama FROM tbl_kategori WHERE kategori_id ='$l->uji_class'")->row();
                                 ?>
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $l->uji_kalimat_asli ?></td>
                                         <!-- <td><?= $l->uji_kalimat_proses ?></td> -->
-                                        <!-- <td><?= $class->kategori_nama ?></td> -->
+                                        <td><?= $class->kategori_nama ?></td>
                                         <td><?= $l->uji_category ?></td>
                                         <td>
                                             <a href="<?= base_url() . 'admin/uji_act_ver3/' . $l->uji_id ?>" class="btn btn-sm btn-primary" title="Proses Data Uji"> <span class="fas fa-fw fa-spinner"></span></a>

@@ -13,6 +13,7 @@
         <div class="col-lg-12 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
+                    <a href="<?= base_url('admin/uji/') ?>" class="float-right btn btn-sm btn-success">Selesai</a>
                     <h6 class="m-0 font-weight-bold text-success">Tabel Cosinus (K=6)</h6>
                 </div>
                 <div class="card-body">

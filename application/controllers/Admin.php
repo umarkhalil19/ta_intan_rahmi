@@ -238,7 +238,8 @@ class Admin extends CI_Controller
                 'uji_category' => $this->input->post('type')
             ];
             $this->m_vic->insert_data($data, 'tbl_data_uji');
-            redirect('admin/uji');
+            $id_max = $this->db->query("SELECT max(uji_id) AS terakhir FROM tbl_data_uji LIMIT 1")->row();
+            redirect('admin/uji_act_ver3/' . $id_max->terakhir);
         }
     }
 
