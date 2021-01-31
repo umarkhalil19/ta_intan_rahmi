@@ -40,7 +40,15 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $l->uji_kalimat_asli ?></td>
                                         <!-- <td><?= $l->uji_kalimat_proses ?></td> -->
-                                        <td><?= $class->kategori_nama ?></td>
+                                        <td>
+                                            <?php
+                                            if ($class) {
+                                                print_r($class->kategori_nama);
+                                            } else {
+                                                echo "?";
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?= $l->uji_category ?></td>
                                         <td>
                                             <a href="<?= base_url() . 'admin/uji_act_ver3/' . $l->uji_id ?>" class="btn btn-sm btn-primary" title="Proses Data Uji"> <span class="fas fa-fw fa-spinner"></span></a>
